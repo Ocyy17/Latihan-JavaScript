@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Second Stopwatch</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #e9da78, #fad0c4);
+      margin: 0;
+      color: #fff;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 26px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .stopwatch {
+      font-size: 80px;
+      font-weight: bold;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 30px 60px;
+      border-radius: 25px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      margin-bottom: 25px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .stopwatch:hover {
+      transform: scale(1.05);
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    button {
+      padding: 12px 28px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button.start {
+      background: #28a745;
+      color: #fff;
+    }
+    button.start:hover { background: #218838; }
+
+    button.stop {
+      background: #dc3545;
+      color: #fff;
+    }
+    button.stop:hover { background: #c82333; }
+
+    button.reset {
+      background: #ffc107;
+      color: #000;
+    }
+    button.reset:hover { background: #e0a800; }
+  </style>
+</head>
+<body>
+
+  <h1>Stopwatch</h1>
+  
+  <div class="stopwatch" id="display">0</div>
+  
+  <div class="buttons">
+    <button class="start" onclick="start()">Start</button>
+    <button class="stop" onclick="stop()">Stop</button>
+    <button class="reset" onclick="reset()">Reset</button>
+  </div>
+
+  <script>
+    let seconds = 0;
+    let running = false;
+    let interval;
+
+    function updateDisplay() {
+      document.getElementById("display").textContent = seconds;
+    }
+
+    function start() {
+      if (!running) {
+        interval = setInterval(() => {
+          seconds++;
+          updateDisplay();
+        }, 1000);
+        running = true;
+      }
+    }
+
+    function stop() {
+      clearInterval(interval);
+      running = false;
+    }
+
+    function reset() {
+      clearInterval(interval);
+      running = false;
+      seconds = 0;
+      updateDisplay();
+    }
+  </script>
+
+</body>
+</html>
