@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalkulator Sederhana</title>
+  <script>
+    // Program akan jalan otomatis saat halaman dibuka
+    window.onload = function() {
+      // Ambil angka pertama
+      let angka1 = parseFloat(prompt("Masukkan angka 1:"));
+
+      // Ambil angka kedua
+      let angka2 = parseFloat(prompt("Masukkan angka 2:"));
+
+      // Ambil operator
+      let operator = prompt("Masukkan operator (+, -, *, /):");
+
+      let hasil;
+
+      // Proses operasi sesuai operator
+      switch (operator) {
+        case "+":
+          hasil = angka1 + angka2;
+          break;
+        case "-":
+          hasil = angka1 - angka2;
+          break;
+        case "*":
+          hasil = angka1 * angka2;
+          break;
+        case "/":
+          if (angka2 !== 0) {
+            hasil = angka1 / angka2;
+          } else {
+            hasil = "Error: Pembagian dengan 0!";
+          }
+          break;
+        default:
+          hasil = "Operator tidak valid!";
+      }
+
+      // Tampilkan hasil
+      alert("Hasil: " + hasil);
+    }
+  </script>
+</head>
+<body>
+  <h1>Kalkulator Sederhana</h1>
+  <p>Buka halaman ini, lalu akan muncul prompt untuk input angka & operator.</p>
+</body>
+</html>
